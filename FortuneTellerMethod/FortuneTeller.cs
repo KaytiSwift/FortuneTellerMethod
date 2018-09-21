@@ -15,6 +15,7 @@ namespace FortuneTellerMethod
         private int birthMonth;
         private string color;
         private int siblings;
+        private int health = 100;
 
         //Properties
         public string GetFirstName
@@ -51,6 +52,12 @@ namespace FortuneTellerMethod
         {
             get { return this.siblings; }
             set { this.siblings = value; }
+        }
+
+        public int GetHealth
+        {
+            get { return this.health; }
+            set { this.health = value; }
         }
 
         //Constructors
@@ -100,6 +107,7 @@ namespace FortuneTellerMethod
                 Console.WriteLine("V - Violet");
                 Console.WriteLine("What is your favorite color? (Please select from ROYGBIV.)");
                 this.GetColor = (Console.ReadLine().ToLower());
+                Tic();
             }
         }
             public string GetVacationHome()
@@ -188,6 +196,37 @@ namespace FortuneTellerMethod
                 return "$0";
                 //return 0.00;
             }
+        }
+
+        public void Tic()
+        {
+            GetHealth = GetHealth - 20;
+            Console.WriteLine("Your current health is {0}", GetHealth);
+            if (GetHealth <= 40)
+            {
+                Console.WriteLine("Do you want to restore your health?");
+                string input = Console.ReadLine().ToLower();
+                if (input == "yes")
+                {
+                    GetHealth = 100;
+                    Console.WriteLine("Your health has been restored to 100!");
+                }
+                else if (GetHealth <= 20)
+
+                {
+                  
+                    Console.WriteLine("You health is too low! It has been restored!");
+                    GetHealth = 100;
+                  
+                }
+                else
+                {
+                    
+                }
+
+            }
+           
+            
         }
     }
 }
